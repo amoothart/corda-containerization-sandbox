@@ -1,0 +1,62 @@
+version: '3'
+services: 
+  notary: 
+    ports:
+      - "10000:10000"
+      - "10001:10001"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./Notary/config:/etc/corda
+      - ./Notary/certificates:/opt/corda/certificates
+      - ./Notary/persistence:/opt/corda/persistence
+      - ./Notary/logs:/opt/corda/logs
+      - ./Notary/cordapps:/opt/corda/cordapps
+      - ./node-infos:/opt/corda/additional-node-infos
+      - ./network-parameters:/opt/corda/network-parameters
+  partya: 
+    ports:
+      - "10004:10004"
+      - "10005:10005"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./PartyA/config:/etc/corda
+      - ./PartyA/certificates:/opt/corda/certificates
+      - ./PartyA/persistence:/opt/corda/persistence
+      - ./PartyA/logs:/opt/corda/logs
+      - ./PartyA/cordapps:/opt/corda/cordapps
+      - ./node-infos:/opt/corda/additional-node-infos
+      - ./network-parameters:/opt/corda/network-parameters
+  partyb: 
+    ports:
+      - "10008:10008"
+      - "10009:10009"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./PartyB/config:/etc/corda
+      - ./PartyB/certificates:/opt/corda/certificates
+      - ./PartyB/persistence:/opt/corda/persistence
+      - ./PartyB/logs:/opt/corda/logs
+      - ./PartyB/cordapps:/opt/corda/cordapps
+      - ./node-infos:/opt/corda/additional-node-infos
+      - ./network-parameters:/opt/corda/network-parameters
+  partyc: 
+    ports:
+      - "10012:10012"
+      - "10013:10013"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./PartyC/config:/etc/corda
+      - ./PartyC/certificates:/opt/corda/certificates
+      - ./PartyC/persistence:/opt/corda/persistence
+      - ./PartyC/logs:/opt/corda/logs
+      - ./PartyC/cordapps:/opt/corda/cordapps
+      - ./node-infos:/opt/corda/additional-node-infos
+      - ./network-parameters:/opt/corda/network-parameters

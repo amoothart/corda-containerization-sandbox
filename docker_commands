@@ -1,0 +1,60 @@
+Dockerization of a Corda bootstrapped network
+
+docker build -t austinmoothart/corda_version_override:latest .
+
+docker run -dti \
+        --memory=2048m \
+        --cpus=2 \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/Notary/config:/etc/corda \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/Notary/certificates:/opt/corda/certificates \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/Notary/persistence:/opt/corda/persistence \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/Notary/logs:/opt/corda/logs \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/Notary/cordapps:/opt/corda/cordapps \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/node-infos:/opt/corda/additional-node-infos \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/network-parameters:/opt/corda/network-parameters \
+        -p 10000:10000 \
+        -p 10001:10001 \
+        austinmoothart/corda_version_override:latest
+
+
+docker run -dti \
+        --memory=2048m \
+        --cpus=2 \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyA/config:/etc/corda \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyA/certificates:/opt/corda/certificates \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyA/persistence:/opt/corda/persistence \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyA/logs:/opt/corda/logs \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyA/cordapps:/opt/corda/cordapps \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/node-infos:/opt/corda/additional-node-infos \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/network-parameters:/opt/corda/network-parameters \
+        -p 10004:10004 \
+        -p 10005:10005 \
+        austinmoothart/corda_version_override:latest
+
+docker run -dti \
+        --memory=2048m \
+        --cpus=2 \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyB/config:/etc/corda \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyB/certificates:/opt/corda/certificates \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyB/persistence:/opt/corda/persistence \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyB/logs:/opt/corda/logs \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyB/cordapps:/opt/corda/cordapps \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/node-infos:/opt/corda/additional-node-infos \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/network-parameters:/opt/corda/network-parameters \
+        -p 10008:10008 \
+        -p 10009:10009 \
+        austinmoothart/corda_version_override:latest
+
+docker run -dti \
+        --memory=2048m \
+        --cpus=2 \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyC/config:/etc/corda \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyC/certificates:/opt/corda/certificates \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyC/persistence:/opt/corda/persistence \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyC/logs:/opt/corda/logs \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/PartyC/cordapps:/opt/corda/cordapps \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/node-infos:/opt/corda/additional-node-infos \
+        -v /Users/austinmoothart/dev/bootstrap-sandbox/network-parameters:/opt/corda/network-parameters \
+        -p 10012:10012 \
+        -p 10013:10013 \
+        austinmoothart/corda_version_override:latest
